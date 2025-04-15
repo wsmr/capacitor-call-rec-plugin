@@ -13,8 +13,7 @@
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
-    "CapacitorCallRecPlugin.podspec",
-    "src/"
+    "CapacitorCallRecPlugin.podspec"
   ],
   "author": "Diyawanna Tech @sahan",
   "license": "MIT",
@@ -28,10 +27,7 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native",
-    "call",
-    "recorder",
-    "android"
+    "native"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
@@ -43,14 +39,11 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api CallRecorderPluginPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api CallRecorderPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "@capacitor/core": "7.2.0"
   },
   "devDependencies": {
     "@capacitor/android": "^7.0.0",

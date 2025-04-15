@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { CallRecorderPluginPlugin } from './definitions';
+import type { CallRecorderPlugin } from './definitions';
 
-const CallRecorderPlugin = registerPlugin<CallRecorderPluginPlugin>('CallRecorderPlugin', {
-  web: () => import('./web').then((m) => new m.CallRecorderPluginWeb()),
+const CallRecorder = registerPlugin<CallRecorderPlugin>('CallRecorder', {
+  web: () => import('./web').then((m) => new m.CallRecorderWeb()),
 });
 
 export * from './definitions';
-export { CallRecorderPlugin };
+export { CallRecorder };

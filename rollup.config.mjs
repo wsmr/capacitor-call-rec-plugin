@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorCallRecorderPlugin',
+      name: 'capacitorCallRecorder',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },
