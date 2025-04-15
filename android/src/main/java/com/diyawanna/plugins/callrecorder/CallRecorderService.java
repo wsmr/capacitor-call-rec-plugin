@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -94,7 +95,8 @@ public class CallRecorderService extends Service {
             if (customDirectory != null && !customDirectory.isEmpty()) {
                 directory = new File(customDirectory);
             } else {
-                directory = new File(getExternalFilesDir(null), "CallRecordings");
+                directory = new File(Environment.getExternalStorageDirectory(), "CallRecordings");
+//                 directory = new File(getExternalFilesDir(null), "CallRecordings");
             }
 
             if (!directory.exists()) {
@@ -111,20 +113,19 @@ public class CallRecorderService extends Service {
 
             // Initialize media recorder
             mediaRecorder = new MediaRecorder();
-
-            // For different Android versions, we might need different audio sources
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                // Android 10+ - use voice communication for better quality
-                mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
-            } else {
-                // Older Android versions - try microphone
-                mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            }
-
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
+//             // For different Android versions, we might need different audio sources
+//             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//               // Android 10+ - use voice communication for better quality
+//               mediaRecorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
+//             } else {
+//               // Older Android versions - try microphone
+//               mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//            }
             mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
-            mediaRecorder.setAudioEncodingBitRate(128000); // 128kbps
-            mediaRecorder.setAudioSamplingRate(44100); // 44.1kHz
+//             mediaRecorder.setAudioEncodingBitRate(128000); // 128kbps
+//             mediaRecorder.setAudioSamplingRate(44100); // 44.1kHz
             mediaRecorder.setOutputFile(outputFile);
 
             // Prepare and start recording

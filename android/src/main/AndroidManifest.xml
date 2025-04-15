@@ -1,23 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.diyawanna.plugins.callrecorder">
+          package="com.yourcompany.plugins.callrecorder">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
-    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+<uses-permission android:name="android.permission.READ_CALL_LOG" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-    <application>
-        <service
-                android:name=".CallDetectionService"
-                android:enabled="true"
-                android:exported="false"/>
-        <service
-                android:name=".CallRecorderService"
-                android:enabled="true"
-                android:exported="false"/>
-    </application>
+<application>
+    <service
+            android:name=".CallDetectionService"
+            android:enabled="true"
+            android:exported="false" />
+    <service
+            android:name=".CallRecorderService"
+            android:enabled="true"
+            android:exported="false" />
+</application>
 </manifest>
