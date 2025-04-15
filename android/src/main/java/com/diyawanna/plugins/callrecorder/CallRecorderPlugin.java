@@ -190,7 +190,7 @@ public class CallRecorderPlugin extends Plugin {
         }
     }
 
-    private boolean hasRequiredPermissions() {
+    public boolean hasRequiredPermissions() {
         // Check for all required permissions
         return hasPermission(Manifest.permission.READ_PHONE_STATE) &&
                hasPermission(Manifest.permission.PROCESS_OUTGOING_CALLS) &&
