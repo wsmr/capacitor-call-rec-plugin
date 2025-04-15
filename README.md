@@ -86,21 +86,6 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 
 --------------------
 
-
-### Interfaces
-
-
-#### Recording
-
-| Prop              | Type                 |
-| ----------------- | -------------------- |
-| **`id`**          | <code>string</code>  |
-| **`filePath`**    | <code>string</code>  |
-| **`phoneNumber`** | <code>string</code>  |
-| **`duration`**    | <code>number</code>  |
-| **`timestamp`**   | <code>number</code>  |
-| **`isOutgoing`**  | <code>boolean</code> |
-
 </docgen-api>
 
 ##  Capacitor Plugin Project Structure
