@@ -76,5 +76,20 @@
     "android": {
       "src": "android"
     }
-  }
+  },
+
+  "main_temp": "dist/esm/index.js",
+  "dependencies": {
+    "@capacitor/core": "^7.0.0"
+  },
+  "files_temp": [
+    "android/",
+    "src/",
+    "capacitor-call-recorder-plugin.podspec"
+  ],
+  "keywords_temp": [
+    "call",
+    "recorder",
+    "android"
+  ]
 }
