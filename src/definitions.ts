@@ -2,9 +2,12 @@
 //   echo(options: { value: string }): Promise<{ value: string }>;
 // }
 export interface CallRecorderPlugin {
-  initialize(options: { directory?: string }) : Promise<{ success: boolean }>;
+  initialize(options: { directory?: string }): Promise<{ success: boolean }>;
+
   enableCallRecording(options: { enabled: boolean }): Promise<{ enabled: boolean }>;
+
   getRecordings(): Promise<{ recordings: Recording[] }>;
+
   deleteRecording(options: { id: string }): Promise<{ success: boolean }>;
 }
 
@@ -16,22 +19,3 @@ export interface Recording {
   timestamp: number;
   isOutgoing: boolean;
 }
-
-// export interface CallRecorderPluginPlugin {
-//   initialize(options: { directory?: string }): Promise<{ success: boolean }>;
-//
-//   enableCallRecording(options: { enabled: boolean }): Promise<{ enabled: boolean }>;
-//
-//   getRecordings(): Promise<{ recordings: Recording[] }>;
-//
-//   deleteRecording(options: { id: string }): Promise<{ success: boolean }>;
-// }
-//
-// export interface Recording {
-//   id: string;
-//   filePath: string;
-//   phoneNumber: string;
-//   duration: number;
-//   timestamp: number;
-//   isOutgoing: boolean;
-// }

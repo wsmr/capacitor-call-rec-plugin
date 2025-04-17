@@ -13,7 +13,6 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
 * [`initialize(...)`](#initialize)
 * [`enableCallRecording(...)`](#enablecallrecording)
 * [`getRecordings()`](#getrecordings)
@@ -25,7 +24,6 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
 ### initialize(...)
 
 ```typescript
@@ -70,21 +68,31 @@ getRecordings() => Promise<{ recordings: Recording[]; }>
 ### deleteRecording(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
-// deleteRecording(options: { id: string; }) => Promise<{ success: boolean; }>
+deleteRecording(options: { id: string; }) => Promise<{ success: boolean; }>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+| Param         | Type                         |
+| ------------- | ---------------------------- |
+| **`options`** | <code>{ id: string; }</code> |
 
-[//]: # (| **`options`** | <code>{ id: string; }</code> |)
-
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
-
-[//]: # (**Returns:** <code>Promise&lt;{ success: boolean; }&gt;</code>)
+**Returns:** <code>Promise&lt;{ success: boolean; }&gt;</code>
 
 --------------------
+
+
+### Interfaces
+
+
+#### Recording
+
+| Prop              | Type                 |
+| ----------------- | -------------------- |
+| **`id`**          | <code>string</code>  |
+| **`filePath`**    | <code>string</code>  |
+| **`phoneNumber`** | <code>string</code>  |
+| **`duration`**    | <code>number</code>  |
+| **`timestamp`**   | <code>number</code>  |
+| **`isOutgoing`**  | <code>boolean</code> |
 
 </docgen-api>
 
