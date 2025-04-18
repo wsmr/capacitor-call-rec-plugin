@@ -17,6 +17,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import java.util.Objects;
+
 public class CallDetectionService extends Service {
     private static final String TAG = "CallDetectionService";
     private static final int NOTIFICATION_ID = 1;
@@ -160,7 +162,8 @@ public class CallDetectionService extends Service {
     private class OutgoingCallReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
+//            if (intent.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
+            if (Objects.equals(intent.getAction(), Intent.ACTION_NEW_OUTGOING_CALL)) {
                 String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
                 startCallRecording(phoneNumber, true);
             }

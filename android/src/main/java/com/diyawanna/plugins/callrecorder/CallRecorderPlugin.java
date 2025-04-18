@@ -78,6 +78,7 @@ public class CallRecorderPlugin extends Plugin {
     public void initialize(PluginCall call) {
         String directory = call.getString("directory", "");
 
+        assert directory != null;
         if (directory.isEmpty()) {
             recordingsDirectory = new File(Environment.getExternalStorageDirectory(), "CallRecordings").getAbsolutePath();
         } else {
@@ -109,7 +110,8 @@ public class CallRecorderPlugin extends Plugin {
 
     @PluginMethod
     public void enableCallRecording(PluginCall call) {
-        isRecordingEnabled = call.getBoolean("enabled", true);
+//         isRecordingEnabled = call.getBoolean("enabled", true);
+        isRecordingEnabled = Boolean.TRUE.equals(call.getBoolean("enabled", true));
 
         // Update the service with the new setting
         Intent intent = new Intent(getContext(), CallDetectionService.class);

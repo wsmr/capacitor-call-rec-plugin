@@ -98,6 +98,7 @@ deleteRecording(options: { id: string; }) => Promise<{ success: boolean; }>
 
 ##  Capacitor Plugin Project Structure
 
+```
 capacitor-call-recorder-plugin/
 ├── android/
 │   ├── build.gradle                  # Auto-generated
@@ -127,7 +128,7 @@ capacitor-call-recorder-plugin/
 ├── package.json               # MODIFY: Plugin metadata and dependencies
 ├── package-lock.json          # Auto-generated
 └── tsconfig.json              # Auto-generated, usually doesn't need modification
-
+```
 Key Files to Modify in Your Capacitor Plugin
 
 - `android/src/main/AndroidManifest.xml`: Add all required permissions and service declarations
