@@ -13,11 +13,18 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.media.MediaRecorder;
+import android.os.Environment;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import java.util.Objects;
+import java.util.Date;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 
 public class CallDetectionService extends Service {
     private static final String TAG = "CallDetectionService";
@@ -33,16 +40,30 @@ public class CallDetectionService extends Service {
     private String currentPhoneNumber = "";
     private boolean isCallInProgress = false;
 
+
+    private MediaRecorder recorder;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
+
+//        createNotificationChannel();
+//
+//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                .setContentTitle("Call Recording")
+//                .setContentText("Recording call in progress...")
+//                .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+//                .build();
+//        startForeground(1, notification);
+//        startRecording();
+
         // Create notification channel for Android O and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
-                CHANNEL_ID,
-                "Call Recorder Service",
-                NotificationManager.IMPORTANCE_LOW
+                    CHANNEL_ID,
+                    "Call Recorder Service",
+                    NotificationManager.IMPORTANCE_LOW
             );
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
@@ -61,6 +82,28 @@ public class CallDetectionService extends Service {
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
         registerReceiver(outgoingCallReceiver, intentFilter);
     }
+
+
+//    private void startRecording() {
+//        try {
+//            String outputPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/CallRecordings/";
+//            File dir = new File(outputPath);
+//            if (!dir.exists()) dir.mkdirs();
+//
+//            String fileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".3gp";
+//            String filePath = outputPath + fileName;
+//
+//            recorder = new MediaRecorder();
+//            recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_COMMUNICATION);
+//            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//            recorder.setOutputFile(filePath);
+//            recorder.prepare();
+//            recorder.start();
+//        } catch (IOException e) {
+//            Log.e("CallRecorder", "Failed to start recording", e);
+//        }
+//    }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -85,14 +128,34 @@ public class CallDetectionService extends Service {
         unregisterReceiver(outgoingCallReceiver);
 
         super.onDestroy();
+
+//        if (recorder != null) {
+//            recorder.stop();
+//            recorder.release();
+//            recorder = null;
+//        }
     }
+
+//    private void createNotificationChannel() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            NotificationChannel channel = new NotificationChannel(
+//                    CHANNEL_ID,
+//                    "Call Recorder Channel",
+//                    NotificationManager.IMPORTANCE_DEFAULT
+//            );
+//            NotificationManager manager = getSystemService(NotificationManager.class);
+//            if (manager != null) {
+//                manager.createNotificationChannel(channel);
+//            }
+//        }
+//    }
 
     private Notification createNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Call Recorder")
-            .setContentText("Monitoring phone calls")
-            .setSmallIcon(android.R.drawable.ic_menu_call)
-            .setPriority(NotificationCompat.PRIORITY_LOW);
+                .setContentTitle("Call Recorder")
+                .setContentText("Monitoring phone calls")
+                .setSmallIcon(android.R.drawable.ic_menu_call)
+                .setPriority(NotificationCompat.PRIORITY_LOW);
 
         return builder.build();
     }

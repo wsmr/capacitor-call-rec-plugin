@@ -24,6 +24,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.IntentFilter;
+import android.telephony.TelephonyManager;
+
 // @CapacitorPlugin(name = "CallRecorder")
 // public class CallRecorderPlugin extends Plugin {
 //
@@ -38,6 +41,7 @@ import java.util.List;
 //         call.resolve(ret);
 //     }
 // }
+
 
 @CapacitorPlugin(
     name = "CallRecorder",
@@ -73,6 +77,38 @@ public class CallRecorderPlugin extends Plugin {
 
     private boolean isRecordingEnabled = false;
     private String recordingsDirectory = "";
+
+
+//    private CallReceiver callReceiver;
+//
+//    @Override
+//    public void load() {
+//        super.load();
+//        callReceiver = new CallReceiver();
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction("android.intent.action.PHONE_STATE");
+//        getContext().registerReceiver(callReceiver, filter);
+//    }
+//
+//    @Override
+//    protected void handleOnDestroy() {
+//        getContext().unregisterReceiver(callReceiver);
+//        super.handleOnDestroy();
+//    }
+//
+//    @PluginMethod
+//    public void startRecording(PluginCall call) {
+//        Intent serviceIntent = new Intent(getContext(), CallRecordingService.class);
+//        getContext().startForegroundService(serviceIntent);
+//        call.resolve();
+//    }
+//
+//    @PluginMethod
+//    public void stopRecording(PluginCall call) {
+//        Intent serviceIntent = new Intent(getContext(), CallRecordingService.class);
+//        getContext().stopService(serviceIntent);
+//        call.resolve();
+//    }
 
     @PluginMethod
     public void initialize(PluginCall call) {
